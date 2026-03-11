@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package csar.authz.v1;
 
-option go_package = "github.com/ledatu/csar-proto/authz/v1;authzv1";
+option go_package = "github.com/ledatu/csar-proto/csar/authz/v1;authzv1";
 
 // AuthzService provides RBAC-based authorization decisions and policy management.
 service AuthzService {

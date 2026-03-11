@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.6.1
 // - protoc             (unknown)
-// source: authz/v1/authz.proto
+// source: csar/authz/v1/authz.proto
 
 package authzv1
 
@@ -525,5 +525,5 @@ var AuthzService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "authz/v1/authz.proto",
+	Metadata: "csar/authz/v1/authz.proto",
 }

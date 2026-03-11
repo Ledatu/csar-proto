@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.11
 // 	protoc        (unknown)
-// source: authz/v1/authz.proto
+// source: csar/authz/v1/authz.proto
 
 package authzv1
 
@@ -41,7 +41,7 @@ type CheckAccessRequest struct {
 
 func (x *CheckAccessRequest) Reset() {
 	*x = CheckAccessRequest{}
-	mi := &file_authz_v1_authz_proto_msgTypes[0]
+	mi := &file_csar_authz_v1_authz_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -53,7 +53,7 @@ func (x *CheckAccessRequest) String() string {
 func (*CheckAccessRequest) ProtoMessage() {}
 
 func (x *CheckAccessRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_authz_v1_authz_proto_msgTypes[0]
+	mi := &file_csar_authz_v1_authz_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -66,7 +66,7 @@ func (x *CheckAccessRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CheckAccessRequest.ProtoReflect.Descriptor instead.
 func (*CheckAccessRequest) Descriptor() ([]byte, []int) {
-	return file_authz_v1_authz_proto_rawDescGZIP(), []int{0}
+	return file_csar_authz_v1_authz_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *CheckAccessRequest) GetSubject() string {
@@ -126,7 +126,7 @@ type CheckAccessResponse struct {
 
 func (x *CheckAccessResponse) Reset() {
 	*x = CheckAccessResponse{}
-	mi := &file_authz_v1_authz_proto_msgTypes[1]
+	mi := &file_csar_authz_v1_authz_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -138,7 +138,7 @@ func (x *CheckAccessResponse) String() string {
 func (*CheckAccessResponse) ProtoMessage() {}
 
 func (x *CheckAccessResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_authz_v1_authz_proto_msgTypes[1]
+	mi := &file_csar_authz_v1_authz_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -151,7 +151,7 @@ func (x *CheckAccessResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CheckAccessResponse.ProtoReflect.Descriptor instead.
 func (*CheckAccessResponse) Descriptor() ([]byte, []int) {
-	return file_authz_v1_authz_proto_rawDescGZIP(), []int{1}
+	return file_csar_authz_v1_authz_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *CheckAccessResponse) GetAllowed() bool {
@@ -191,7 +191,7 @@ type Role struct {
 
 func (x *Role) Reset() {
 	*x = Role{}
-	mi := &file_authz_v1_authz_proto_msgTypes[2]
+	mi := &file_csar_authz_v1_authz_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -203,7 +203,7 @@ func (x *Role) String() string {
 func (*Role) ProtoMessage() {}
 
 func (x *Role) ProtoReflect() protoreflect.Message {
-	mi := &file_authz_v1_authz_proto_msgTypes[2]
+	mi := &file_csar_authz_v1_authz_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -216,7 +216,7 @@ func (x *Role) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Role.ProtoReflect.Descriptor instead.
 func (*Role) Descriptor() ([]byte, []int) {
-	return file_authz_v1_authz_proto_rawDescGZIP(), []int{2}
+	return file_csar_authz_v1_authz_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *Role) GetName() string {
@@ -258,7 +258,7 @@ type CreateRoleRequest struct {
 
 func (x *CreateRoleRequest) Reset() {
 	*x = CreateRoleRequest{}
-	mi := &file_authz_v1_authz_proto_msgTypes[3]
+	mi := &file_csar_authz_v1_authz_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -270,7 +270,7 @@ func (x *CreateRoleRequest) String() string {
 func (*CreateRoleRequest) ProtoMessage() {}
 
 func (x *CreateRoleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_authz_v1_authz_proto_msgTypes[3]
+	mi := &file_csar_authz_v1_authz_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -283,7 +283,7 @@ func (x *CreateRoleRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateRoleRequest.ProtoReflect.Descriptor instead.
 func (*CreateRoleRequest) Descriptor() ([]byte, []int) {
-	return file_authz_v1_authz_proto_rawDescGZIP(), []int{3}
+	return file_csar_authz_v1_authz_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *CreateRoleRequest) GetName() string {
@@ -316,7 +316,7 @@ type CreateRoleResponse struct {
 
 func (x *CreateRoleResponse) Reset() {
 	*x = CreateRoleResponse{}
-	mi := &file_authz_v1_authz_proto_msgTypes[4]
+	mi := &file_csar_authz_v1_authz_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -328,7 +328,7 @@ func (x *CreateRoleResponse) String() string {
 func (*CreateRoleResponse) ProtoMessage() {}
 
 func (x *CreateRoleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_authz_v1_authz_proto_msgTypes[4]
+	mi := &file_csar_authz_v1_authz_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -341,7 +341,7 @@ func (x *CreateRoleResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateRoleResponse.ProtoReflect.Descriptor instead.
 func (*CreateRoleResponse) Descriptor() ([]byte, []int) {
-	return file_authz_v1_authz_proto_rawDescGZIP(), []int{4}
+	return file_csar_authz_v1_authz_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *CreateRoleResponse) GetRole() *Role {
@@ -360,7 +360,7 @@ type DeleteRoleRequest struct {
 
 func (x *DeleteRoleRequest) Reset() {
 	*x = DeleteRoleRequest{}
-	mi := &file_authz_v1_authz_proto_msgTypes[5]
+	mi := &file_csar_authz_v1_authz_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -372,7 +372,7 @@ func (x *DeleteRoleRequest) String() string {
 func (*DeleteRoleRequest) ProtoMessage() {}
 
 func (x *DeleteRoleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_authz_v1_authz_proto_msgTypes[5]
+	mi := &file_csar_authz_v1_authz_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -385,7 +385,7 @@ func (x *DeleteRoleRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteRoleRequest.ProtoReflect.Descriptor instead.
 func (*DeleteRoleRequest) Descriptor() ([]byte, []int) {
-	return file_authz_v1_authz_proto_rawDescGZIP(), []int{5}
+	return file_csar_authz_v1_authz_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *DeleteRoleRequest) GetName() string {
@@ -403,7 +403,7 @@ type DeleteRoleResponse struct {
 
 func (x *DeleteRoleResponse) Reset() {
 	*x = DeleteRoleResponse{}
-	mi := &file_authz_v1_authz_proto_msgTypes[6]
+	mi := &file_csar_authz_v1_authz_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -415,7 +415,7 @@ func (x *DeleteRoleResponse) String() string {
 func (*DeleteRoleResponse) ProtoMessage() {}
 
 func (x *DeleteRoleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_authz_v1_authz_proto_msgTypes[6]
+	mi := &file_csar_authz_v1_authz_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -428,7 +428,7 @@ func (x *DeleteRoleResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteRoleResponse.ProtoReflect.Descriptor instead.
 func (*DeleteRoleResponse) Descriptor() ([]byte, []int) {
-	return file_authz_v1_authz_proto_rawDescGZIP(), []int{6}
+	return file_csar_authz_v1_authz_proto_rawDescGZIP(), []int{6}
 }
 
 type GetRoleRequest struct {
@@ -440,7 +440,7 @@ type GetRoleRequest struct {
 
 func (x *GetRoleRequest) Reset() {
 	*x = GetRoleRequest{}
-	mi := &file_authz_v1_authz_proto_msgTypes[7]
+	mi := &file_csar_authz_v1_authz_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -452,7 +452,7 @@ func (x *GetRoleRequest) String() string {
 func (*GetRoleRequest) ProtoMessage() {}
 
 func (x *GetRoleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_authz_v1_authz_proto_msgTypes[7]
+	mi := &file_csar_authz_v1_authz_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -465,7 +465,7 @@ func (x *GetRoleRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetRoleRequest.ProtoReflect.Descriptor instead.
 func (*GetRoleRequest) Descriptor() ([]byte, []int) {
-	return file_authz_v1_authz_proto_rawDescGZIP(), []int{7}
+	return file_csar_authz_v1_authz_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *GetRoleRequest) GetName() string {
@@ -484,7 +484,7 @@ type GetRoleResponse struct {
 
 func (x *GetRoleResponse) Reset() {
 	*x = GetRoleResponse{}
-	mi := &file_authz_v1_authz_proto_msgTypes[8]
+	mi := &file_csar_authz_v1_authz_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -496,7 +496,7 @@ func (x *GetRoleResponse) String() string {
 func (*GetRoleResponse) ProtoMessage() {}
 
 func (x *GetRoleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_authz_v1_authz_proto_msgTypes[8]
+	mi := &file_csar_authz_v1_authz_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -509,7 +509,7 @@ func (x *GetRoleResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetRoleResponse.ProtoReflect.Descriptor instead.
 func (*GetRoleResponse) Descriptor() ([]byte, []int) {
-	return file_authz_v1_authz_proto_rawDescGZIP(), []int{8}
+	return file_csar_authz_v1_authz_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *GetRoleResponse) GetRole() *Role {
@@ -527,7 +527,7 @@ type ListRolesRequest struct {
 
 func (x *ListRolesRequest) Reset() {
 	*x = ListRolesRequest{}
-	mi := &file_authz_v1_authz_proto_msgTypes[9]
+	mi := &file_csar_authz_v1_authz_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -539,7 +539,7 @@ func (x *ListRolesRequest) String() string {
 func (*ListRolesRequest) ProtoMessage() {}
 
 func (x *ListRolesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_authz_v1_authz_proto_msgTypes[9]
+	mi := &file_csar_authz_v1_authz_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -552,7 +552,7 @@ func (x *ListRolesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListRolesRequest.ProtoReflect.Descriptor instead.
 func (*ListRolesRequest) Descriptor() ([]byte, []int) {
-	return file_authz_v1_authz_proto_rawDescGZIP(), []int{9}
+	return file_csar_authz_v1_authz_proto_rawDescGZIP(), []int{9}
 }
 
 type ListRolesResponse struct {
@@ -564,7 +564,7 @@ type ListRolesResponse struct {
 
 func (x *ListRolesResponse) Reset() {
 	*x = ListRolesResponse{}
-	mi := &file_authz_v1_authz_proto_msgTypes[10]
+	mi := &file_csar_authz_v1_authz_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -576,7 +576,7 @@ func (x *ListRolesResponse) String() string {
 func (*ListRolesResponse) ProtoMessage() {}
 
 func (x *ListRolesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_authz_v1_authz_proto_msgTypes[10]
+	mi := &file_csar_authz_v1_authz_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -589,7 +589,7 @@ func (x *ListRolesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListRolesResponse.ProtoReflect.Descriptor instead.
 func (*ListRolesResponse) Descriptor() ([]byte, []int) {
-	return file_authz_v1_authz_proto_rawDescGZIP(), []int{10}
+	return file_csar_authz_v1_authz_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *ListRolesResponse) GetRoles() []*Role {
@@ -611,7 +611,7 @@ type AssignRoleRequest struct {
 
 func (x *AssignRoleRequest) Reset() {
 	*x = AssignRoleRequest{}
-	mi := &file_authz_v1_authz_proto_msgTypes[11]
+	mi := &file_csar_authz_v1_authz_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -623,7 +623,7 @@ func (x *AssignRoleRequest) String() string {
 func (*AssignRoleRequest) ProtoMessage() {}
 
 func (x *AssignRoleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_authz_v1_authz_proto_msgTypes[11]
+	mi := &file_csar_authz_v1_authz_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -636,7 +636,7 @@ func (x *AssignRoleRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AssignRoleRequest.ProtoReflect.Descriptor instead.
 func (*AssignRoleRequest) Descriptor() ([]byte, []int) {
-	return file_authz_v1_authz_proto_rawDescGZIP(), []int{11}
+	return file_csar_authz_v1_authz_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *AssignRoleRequest) GetSubject() string {
@@ -675,7 +675,7 @@ type AssignRoleResponse struct {
 
 func (x *AssignRoleResponse) Reset() {
 	*x = AssignRoleResponse{}
-	mi := &file_authz_v1_authz_proto_msgTypes[12]
+	mi := &file_csar_authz_v1_authz_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -687,7 +687,7 @@ func (x *AssignRoleResponse) String() string {
 func (*AssignRoleResponse) ProtoMessage() {}
 
 func (x *AssignRoleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_authz_v1_authz_proto_msgTypes[12]
+	mi := &file_csar_authz_v1_authz_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -700,7 +700,7 @@ func (x *AssignRoleResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AssignRoleResponse.ProtoReflect.Descriptor instead.
 func (*AssignRoleResponse) Descriptor() ([]byte, []int) {
-	return file_authz_v1_authz_proto_rawDescGZIP(), []int{12}
+	return file_csar_authz_v1_authz_proto_rawDescGZIP(), []int{12}
 }
 
 type RevokeRoleRequest struct {
@@ -715,7 +715,7 @@ type RevokeRoleRequest struct {
 
 func (x *RevokeRoleRequest) Reset() {
 	*x = RevokeRoleRequest{}
-	mi := &file_authz_v1_authz_proto_msgTypes[13]
+	mi := &file_csar_authz_v1_authz_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -727,7 +727,7 @@ func (x *RevokeRoleRequest) String() string {
 func (*RevokeRoleRequest) ProtoMessage() {}
 
 func (x *RevokeRoleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_authz_v1_authz_proto_msgTypes[13]
+	mi := &file_csar_authz_v1_authz_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -740,7 +740,7 @@ func (x *RevokeRoleRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RevokeRoleRequest.ProtoReflect.Descriptor instead.
 func (*RevokeRoleRequest) Descriptor() ([]byte, []int) {
-	return file_authz_v1_authz_proto_rawDescGZIP(), []int{13}
+	return file_csar_authz_v1_authz_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *RevokeRoleRequest) GetSubject() string {
@@ -779,7 +779,7 @@ type RevokeRoleResponse struct {
 
 func (x *RevokeRoleResponse) Reset() {
 	*x = RevokeRoleResponse{}
-	mi := &file_authz_v1_authz_proto_msgTypes[14]
+	mi := &file_csar_authz_v1_authz_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -791,7 +791,7 @@ func (x *RevokeRoleResponse) String() string {
 func (*RevokeRoleResponse) ProtoMessage() {}
 
 func (x *RevokeRoleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_authz_v1_authz_proto_msgTypes[14]
+	mi := &file_csar_authz_v1_authz_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -804,7 +804,7 @@ func (x *RevokeRoleResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RevokeRoleResponse.ProtoReflect.Descriptor instead.
 func (*RevokeRoleResponse) Descriptor() ([]byte, []int) {
-	return file_authz_v1_authz_proto_rawDescGZIP(), []int{14}
+	return file_csar_authz_v1_authz_proto_rawDescGZIP(), []int{14}
 }
 
 type ListSubjectRolesRequest struct {
@@ -818,7 +818,7 @@ type ListSubjectRolesRequest struct {
 
 func (x *ListSubjectRolesRequest) Reset() {
 	*x = ListSubjectRolesRequest{}
-	mi := &file_authz_v1_authz_proto_msgTypes[15]
+	mi := &file_csar_authz_v1_authz_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -830,7 +830,7 @@ func (x *ListSubjectRolesRequest) String() string {
 func (*ListSubjectRolesRequest) ProtoMessage() {}
 
 func (x *ListSubjectRolesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_authz_v1_authz_proto_msgTypes[15]
+	mi := &file_csar_authz_v1_authz_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -843,7 +843,7 @@ func (x *ListSubjectRolesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListSubjectRolesRequest.ProtoReflect.Descriptor instead.
 func (*ListSubjectRolesRequest) Descriptor() ([]byte, []int) {
-	return file_authz_v1_authz_proto_rawDescGZIP(), []int{15}
+	return file_csar_authz_v1_authz_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *ListSubjectRolesRequest) GetSubject() string {
@@ -876,7 +876,7 @@ type ListSubjectRolesResponse struct {
 
 func (x *ListSubjectRolesResponse) Reset() {
 	*x = ListSubjectRolesResponse{}
-	mi := &file_authz_v1_authz_proto_msgTypes[16]
+	mi := &file_csar_authz_v1_authz_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -888,7 +888,7 @@ func (x *ListSubjectRolesResponse) String() string {
 func (*ListSubjectRolesResponse) ProtoMessage() {}
 
 func (x *ListSubjectRolesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_authz_v1_authz_proto_msgTypes[16]
+	mi := &file_csar_authz_v1_authz_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -901,7 +901,7 @@ func (x *ListSubjectRolesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListSubjectRolesResponse.ProtoReflect.Descriptor instead.
 func (*ListSubjectRolesResponse) Descriptor() ([]byte, []int) {
-	return file_authz_v1_authz_proto_rawDescGZIP(), []int{16}
+	return file_csar_authz_v1_authz_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *ListSubjectRolesResponse) GetRoles() []string {
@@ -927,7 +927,7 @@ type Permission struct {
 
 func (x *Permission) Reset() {
 	*x = Permission{}
-	mi := &file_authz_v1_authz_proto_msgTypes[17]
+	mi := &file_csar_authz_v1_authz_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -939,7 +939,7 @@ func (x *Permission) String() string {
 func (*Permission) ProtoMessage() {}
 
 func (x *Permission) ProtoReflect() protoreflect.Message {
-	mi := &file_authz_v1_authz_proto_msgTypes[17]
+	mi := &file_csar_authz_v1_authz_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -952,7 +952,7 @@ func (x *Permission) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Permission.ProtoReflect.Descriptor instead.
 func (*Permission) Descriptor() ([]byte, []int) {
-	return file_authz_v1_authz_proto_rawDescGZIP(), []int{17}
+	return file_csar_authz_v1_authz_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *Permission) GetId() string {
@@ -994,7 +994,7 @@ type AddPermissionRequest struct {
 
 func (x *AddPermissionRequest) Reset() {
 	*x = AddPermissionRequest{}
-	mi := &file_authz_v1_authz_proto_msgTypes[18]
+	mi := &file_csar_authz_v1_authz_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1006,7 +1006,7 @@ func (x *AddPermissionRequest) String() string {
 func (*AddPermissionRequest) ProtoMessage() {}
 
 func (x *AddPermissionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_authz_v1_authz_proto_msgTypes[18]
+	mi := &file_csar_authz_v1_authz_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1019,7 +1019,7 @@ func (x *AddPermissionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddPermissionRequest.ProtoReflect.Descriptor instead.
 func (*AddPermissionRequest) Descriptor() ([]byte, []int) {
-	return file_authz_v1_authz_proto_rawDescGZIP(), []int{18}
+	return file_csar_authz_v1_authz_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *AddPermissionRequest) GetRole() string {
@@ -1052,7 +1052,7 @@ type AddPermissionResponse struct {
 
 func (x *AddPermissionResponse) Reset() {
 	*x = AddPermissionResponse{}
-	mi := &file_authz_v1_authz_proto_msgTypes[19]
+	mi := &file_csar_authz_v1_authz_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1064,7 +1064,7 @@ func (x *AddPermissionResponse) String() string {
 func (*AddPermissionResponse) ProtoMessage() {}
 
 func (x *AddPermissionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_authz_v1_authz_proto_msgTypes[19]
+	mi := &file_csar_authz_v1_authz_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1077,7 +1077,7 @@ func (x *AddPermissionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddPermissionResponse.ProtoReflect.Descriptor instead.
 func (*AddPermissionResponse) Descriptor() ([]byte, []int) {
-	return file_authz_v1_authz_proto_rawDescGZIP(), []int{19}
+	return file_csar_authz_v1_authz_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *AddPermissionResponse) GetPermission() *Permission {
@@ -1096,7 +1096,7 @@ type RemovePermissionRequest struct {
 
 func (x *RemovePermissionRequest) Reset() {
 	*x = RemovePermissionRequest{}
-	mi := &file_authz_v1_authz_proto_msgTypes[20]
+	mi := &file_csar_authz_v1_authz_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1108,7 +1108,7 @@ func (x *RemovePermissionRequest) String() string {
 func (*RemovePermissionRequest) ProtoMessage() {}
 
 func (x *RemovePermissionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_authz_v1_authz_proto_msgTypes[20]
+	mi := &file_csar_authz_v1_authz_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1121,7 +1121,7 @@ func (x *RemovePermissionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RemovePermissionRequest.ProtoReflect.Descriptor instead.
 func (*RemovePermissionRequest) Descriptor() ([]byte, []int) {
-	return file_authz_v1_authz_proto_rawDescGZIP(), []int{20}
+	return file_csar_authz_v1_authz_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *RemovePermissionRequest) GetId() string {
@@ -1139,7 +1139,7 @@ type RemovePermissionResponse struct {
 
 func (x *RemovePermissionResponse) Reset() {
 	*x = RemovePermissionResponse{}
-	mi := &file_authz_v1_authz_proto_msgTypes[21]
+	mi := &file_csar_authz_v1_authz_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1151,7 +1151,7 @@ func (x *RemovePermissionResponse) String() string {
 func (*RemovePermissionResponse) ProtoMessage() {}
 
 func (x *RemovePermissionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_authz_v1_authz_proto_msgTypes[21]
+	mi := &file_csar_authz_v1_authz_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1164,7 +1164,7 @@ func (x *RemovePermissionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RemovePermissionResponse.ProtoReflect.Descriptor instead.
 func (*RemovePermissionResponse) Descriptor() ([]byte, []int) {
-	return file_authz_v1_authz_proto_rawDescGZIP(), []int{21}
+	return file_csar_authz_v1_authz_proto_rawDescGZIP(), []int{21}
 }
 
 type ListRolePermissionsRequest struct {
@@ -1176,7 +1176,7 @@ type ListRolePermissionsRequest struct {
 
 func (x *ListRolePermissionsRequest) Reset() {
 	*x = ListRolePermissionsRequest{}
-	mi := &file_authz_v1_authz_proto_msgTypes[22]
+	mi := &file_csar_authz_v1_authz_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1188,7 +1188,7 @@ func (x *ListRolePermissionsRequest) String() string {
 func (*ListRolePermissionsRequest) ProtoMessage() {}
 
 func (x *ListRolePermissionsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_authz_v1_authz_proto_msgTypes[22]
+	mi := &file_csar_authz_v1_authz_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1201,7 +1201,7 @@ func (x *ListRolePermissionsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListRolePermissionsRequest.ProtoReflect.Descriptor instead.
 func (*ListRolePermissionsRequest) Descriptor() ([]byte, []int) {
-	return file_authz_v1_authz_proto_rawDescGZIP(), []int{22}
+	return file_csar_authz_v1_authz_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *ListRolePermissionsRequest) GetRole() string {
@@ -1220,7 +1220,7 @@ type ListRolePermissionsResponse struct {
 
 func (x *ListRolePermissionsResponse) Reset() {
 	*x = ListRolePermissionsResponse{}
-	mi := &file_authz_v1_authz_proto_msgTypes[23]
+	mi := &file_csar_authz_v1_authz_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1232,7 +1232,7 @@ func (x *ListRolePermissionsResponse) String() string {
 func (*ListRolePermissionsResponse) ProtoMessage() {}
 
 func (x *ListRolePermissionsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_authz_v1_authz_proto_msgTypes[23]
+	mi := &file_csar_authz_v1_authz_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1245,7 +1245,7 @@ func (x *ListRolePermissionsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListRolePermissionsResponse.ProtoReflect.Descriptor instead.
 func (*ListRolePermissionsResponse) Descriptor() ([]byte, []int) {
-	return file_authz_v1_authz_proto_rawDescGZIP(), []int{23}
+	return file_csar_authz_v1_authz_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *ListRolePermissionsResponse) GetPermissions() []*Permission {
@@ -1255,11 +1255,11 @@ func (x *ListRolePermissionsResponse) GetPermissions() []*Permission {
 	return nil
 }
 
-var File_authz_v1_authz_proto protoreflect.FileDescriptor
+var File_csar_authz_v1_authz_proto protoreflect.FileDescriptor
 
-const file_authz_v1_authz_proto_rawDesc = "" +
+const file_csar_authz_v1_authz_proto_rawDesc = "" +
 	"\n" +
-	"\x14authz/v1/authz.proto\x12\rcsar.authz.v1\"\xa2\x02\n" +
+	"\x19csar/authz/v1/authz.proto\x12\rcsar.authz.v1\"\xa2\x02\n" +
 	"\x12CheckAccessRequest\x12\x18\n" +
 	"\asubject\x18\x01 \x01(\tR\asubject\x12\x1a\n" +
 	"\bresource\x18\x02 \x01(\tR\bresource\x12\x16\n" +
@@ -1357,22 +1357,22 @@ const file_authz_v1_authz_proto_rawDesc = "" +
 	"\x10ListSubjectRoles\x12&.csar.authz.v1.ListSubjectRolesRequest\x1a'.csar.authz.v1.ListSubjectRolesResponse\x12Z\n" +
 	"\rAddPermission\x12#.csar.authz.v1.AddPermissionRequest\x1a$.csar.authz.v1.AddPermissionResponse\x12c\n" +
 	"\x10RemovePermission\x12&.csar.authz.v1.RemovePermissionRequest\x1a'.csar.authz.v1.RemovePermissionResponse\x12l\n" +
-	"\x13ListRolePermissions\x12).csar.authz.v1.ListRolePermissionsRequest\x1a*.csar.authz.v1.ListRolePermissionsResponseB/Z-github.com/ledatu/csar-proto/authz/v1;authzv1b\x06proto3"
+	"\x13ListRolePermissions\x12).csar.authz.v1.ListRolePermissionsRequest\x1a*.csar.authz.v1.ListRolePermissionsResponseB4Z2github.com/ledatu/csar-proto/csar/authz/v1;authzv1b\x06proto3"
 
 var (
-	file_authz_v1_authz_proto_rawDescOnce sync.Once
-	file_authz_v1_authz_proto_rawDescData []byte
+	file_csar_authz_v1_authz_proto_rawDescOnce sync.Once
+	file_csar_authz_v1_authz_proto_rawDescData []byte
 )
 
-func file_authz_v1_authz_proto_rawDescGZIP() []byte {
-	file_authz_v1_authz_proto_rawDescOnce.Do(func() {
-		file_authz_v1_authz_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_authz_v1_authz_proto_rawDesc), len(file_authz_v1_authz_proto_rawDesc)))
+func file_csar_authz_v1_authz_proto_rawDescGZIP() []byte {
+	file_csar_authz_v1_authz_proto_rawDescOnce.Do(func() {
+		file_csar_authz_v1_authz_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_csar_authz_v1_authz_proto_rawDesc), len(file_csar_authz_v1_authz_proto_rawDesc)))
 	})
-	return file_authz_v1_authz_proto_rawDescData
+	return file_csar_authz_v1_authz_proto_rawDescData
 }
 
-var file_authz_v1_authz_proto_msgTypes = make([]protoimpl.MessageInfo, 26)
-var file_authz_v1_authz_proto_goTypes = []any{
+var file_csar_authz_v1_authz_proto_msgTypes = make([]protoimpl.MessageInfo, 26)
+var file_csar_authz_v1_authz_proto_goTypes = []any{
 	(*CheckAccessRequest)(nil),          // 0: csar.authz.v1.CheckAccessRequest
 	(*CheckAccessResponse)(nil),         // 1: csar.authz.v1.CheckAccessResponse
 	(*Role)(nil),                        // 2: csar.authz.v1.Role
@@ -1400,7 +1400,7 @@ var file_authz_v1_authz_proto_goTypes = []any{
 	nil,                                 // 24: csar.authz.v1.CheckAccessRequest.ContextEntry
 	nil,                                 // 25: csar.authz.v1.CheckAccessResponse.EnrichedHeadersEntry
 }
-var file_authz_v1_authz_proto_depIdxs = []int32{
+var file_csar_authz_v1_authz_proto_depIdxs = []int32{
 	24, // 0: csar.authz.v1.CheckAccessRequest.context:type_name -> csar.authz.v1.CheckAccessRequest.ContextEntry
 	25, // 1: csar.authz.v1.CheckAccessResponse.enriched_headers:type_name -> csar.authz.v1.CheckAccessResponse.EnrichedHeadersEntry
 	2,  // 2: csar.authz.v1.CreateRoleResponse.role:type_name -> csar.authz.v1.Role
@@ -1437,26 +1437,26 @@ var file_authz_v1_authz_proto_depIdxs = []int32{
 	0,  // [0:7] is the sub-list for field type_name
 }
 
-func init() { file_authz_v1_authz_proto_init() }
-func file_authz_v1_authz_proto_init() {
-	if File_authz_v1_authz_proto != nil {
+func init() { file_csar_authz_v1_authz_proto_init() }
+func file_csar_authz_v1_authz_proto_init() {
+	if File_csar_authz_v1_authz_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_authz_v1_authz_proto_rawDesc), len(file_authz_v1_authz_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_csar_authz_v1_authz_proto_rawDesc), len(file_csar_authz_v1_authz_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   26,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_authz_v1_authz_proto_goTypes,
-		DependencyIndexes: file_authz_v1_authz_proto_depIdxs,
-		MessageInfos:      file_authz_v1_authz_proto_msgTypes,
+		GoTypes:           file_csar_authz_v1_authz_proto_goTypes,
+		DependencyIndexes: file_csar_authz_v1_authz_proto_depIdxs,
+		MessageInfos:      file_csar_authz_v1_authz_proto_msgTypes,
 	}.Build()
-	File_authz_v1_authz_proto = out.File
-	file_authz_v1_authz_proto_goTypes = nil
-	file_authz_v1_authz_proto_depIdxs = nil
+	File_csar_authz_v1_authz_proto = out.File
+	file_csar_authz_v1_authz_proto_goTypes = nil
+	file_csar_authz_v1_authz_proto_depIdxs = nil
 }
