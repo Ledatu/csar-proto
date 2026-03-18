@@ -45,6 +45,14 @@ service AuthzService {
 
   // ListRolePermissions returns all permissions for a role.
   rpc ListRolePermissions(ListRolePermissionsRequest) returns (ListRolePermissionsResponse);
+
+  // --- Scope Queries (admin) ---
+
+  // ListScopeAssignments returns all assignments within a scope (e.g., all members of a tenant).
+  rpc ListScopeAssignments(ListScopeAssignmentsRequest) returns (ListScopeAssignmentsResponse);
+
+  // ListSubjectScopes returns all (scope_type, scope_id) pairs where a subject has assignments.
+  rpc ListSubjectScopes(ListSubjectScopesRequest) returns (ListSubjectScopesResponse);
 }
 
 // ─── Access Check ───────────────────────────────────────────────────────────
@@ -195,4 +203,35 @@ message ListRolePermissionsRequest {
 
 message ListRolePermissionsResponse {
   repeated Permission permissions = 1;
+}
+
+// ─── Scope Queries ──────────────────────────────────────────────────────────
+
+message ListScopeAssignmentsRequest {
+  string scope_type = 1;
+  string scope_id = 2;
+}
+
+message ScopeAssignment {
+  string subject = 1;
+  string role = 2;
+  string scope_type = 3;
+  string scope_id = 4;
+}
+
+message ListScopeAssignmentsResponse {
+  repeated ScopeAssignment assignments = 1;
+}
+
+message ListSubjectScopesRequest {
+  string subject = 1;
+}
+
+message SubjectScope {
+  string scope_type = 1;
+  string scope_id = 2;
+}
+
+message ListSubjectScopesResponse {
+  repeated SubjectScope scopes = 1;
 }
