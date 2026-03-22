@@ -32,6 +32,7 @@ const (
 	AuthzService_ListRolePermissions_FullMethodName  = "/csar.authz.v1.AuthzService/ListRolePermissions"
 	AuthzService_ListScopeAssignments_FullMethodName = "/csar.authz.v1.AuthzService/ListScopeAssignments"
 	AuthzService_ListSubjectScopes_FullMethodName    = "/csar.authz.v1.AuthzService/ListSubjectScopes"
+	AuthzService_ReassignSubject_FullMethodName      = "/csar.authz.v1.AuthzService/ReassignSubject"
 )
 
 // AuthzServiceClient is the client API for AuthzService service.
@@ -67,6 +68,9 @@ type AuthzServiceClient interface {
 	ListScopeAssignments(ctx context.Context, in *ListScopeAssignmentsRequest, opts ...grpc.CallOption) (*ListScopeAssignmentsResponse, error)
 	// ListSubjectScopes returns all (scope_type, scope_id) pairs where a subject has assignments.
 	ListSubjectScopes(ctx context.Context, in *ListSubjectScopesRequest, opts ...grpc.CallOption) (*ListSubjectScopesResponse, error)
+	// ReassignSubject atomically moves all assignments from one subject to another.
+	// Duplicate assignments on the target are silently skipped (idempotent).
+	ReassignSubject(ctx context.Context, in *ReassignSubjectRequest, opts ...grpc.CallOption) (*ReassignSubjectResponse, error)
 }
 
 type authzServiceClient struct {
@@ -207,6 +211,16 @@ func (c *authzServiceClient) ListSubjectScopes(ctx context.Context, in *ListSubj
 	return out, nil
 }
 
+func (c *authzServiceClient) ReassignSubject(ctx context.Context, in *ReassignSubjectRequest, opts ...grpc.CallOption) (*ReassignSubjectResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ReassignSubjectResponse)
+	err := c.cc.Invoke(ctx, AuthzService_ReassignSubject_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // AuthzServiceServer is the server API for AuthzService service.
 // All implementations must embed UnimplementedAuthzServiceServer
 // for forward compatibility.
@@ -240,6 +254,9 @@ type AuthzServiceServer interface {
 	ListScopeAssignments(context.Context, *ListScopeAssignmentsRequest) (*ListScopeAssignmentsResponse, error)
 	// ListSubjectScopes returns all (scope_type, scope_id) pairs where a subject has assignments.
 	ListSubjectScopes(context.Context, *ListSubjectScopesRequest) (*ListSubjectScopesResponse, error)
+	// ReassignSubject atomically moves all assignments from one subject to another.
+	// Duplicate assignments on the target are silently skipped (idempotent).
+	ReassignSubject(context.Context, *ReassignSubjectRequest) (*ReassignSubjectResponse, error)
 	mustEmbedUnimplementedAuthzServiceServer()
 }
 
@@ -288,6 +305,9 @@ func (UnimplementedAuthzServiceServer) ListScopeAssignments(context.Context, *Li
 }
 func (UnimplementedAuthzServiceServer) ListSubjectScopes(context.Context, *ListSubjectScopesRequest) (*ListSubjectScopesResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method ListSubjectScopes not implemented")
+}
+func (UnimplementedAuthzServiceServer) ReassignSubject(context.Context, *ReassignSubjectRequest) (*ReassignSubjectResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method ReassignSubject not implemented")
 }
 func (UnimplementedAuthzServiceServer) mustEmbedUnimplementedAuthzServiceServer() {}
 func (UnimplementedAuthzServiceServer) testEmbeddedByValue()                      {}
@@ -544,6 +564,24 @@ func _AuthzService_ListSubjectScopes_Handler(srv interface{}, ctx context.Contex
 	return interceptor(ctx, in, info, handler)
 }
 
+func _AuthzService_ReassignSubject_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ReassignSubjectRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthzServiceServer).ReassignSubject(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthzService_ReassignSubject_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthzServiceServer).ReassignSubject(ctx, req.(*ReassignSubjectRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // AuthzService_ServiceDesc is the grpc.ServiceDesc for AuthzService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -602,6 +640,10 @@ var AuthzService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ListSubjectScopes",
 			Handler:    _AuthzService_ListSubjectScopes_Handler,
+		},
+		{
+			MethodName: "ReassignSubject",
+			Handler:    _AuthzService_ReassignSubject_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

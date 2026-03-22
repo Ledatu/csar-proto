@@ -53,6 +53,10 @@ service AuthzService {
 
   // ListSubjectScopes returns all (scope_type, scope_id) pairs where a subject has assignments.
   rpc ListSubjectScopes(ListSubjectScopesRequest) returns (ListSubjectScopesResponse);
+
+  // ReassignSubject atomically moves all assignments from one subject to another.
+  // Duplicate assignments on the target are silently skipped (idempotent).
+  rpc ReassignSubject(ReassignSubjectRequest) returns (ReassignSubjectResponse);
 }
 
 // ─── Access Check ───────────────────────────────────────────────────────────
@@ -234,4 +238,15 @@ message SubjectScope {
 
 message ListSubjectScopesResponse {
   repeated SubjectScope scopes = 1;
+}
+
+// ─── Subject Reassignment ───────────────────────────────────────────────────
+
+message ReassignSubjectRequest {
+  string source_subject = 1;
+  string target_subject = 2;
+}
+
+message ReassignSubjectResponse {
+  int32 reassigned = 1;
 }

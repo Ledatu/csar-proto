@@ -1559,6 +1559,102 @@ func (x *ListSubjectScopesResponse) GetScopes() []*SubjectScope {
 	return nil
 }
 
+type ReassignSubjectRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	SourceSubject string                 `protobuf:"bytes,1,opt,name=source_subject,json=sourceSubject,proto3" json:"source_subject,omitempty"`
+	TargetSubject string                 `protobuf:"bytes,2,opt,name=target_subject,json=targetSubject,proto3" json:"target_subject,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ReassignSubjectRequest) Reset() {
+	*x = ReassignSubjectRequest{}
+	mi := &file_csar_authz_v1_authz_proto_msgTypes[30]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ReassignSubjectRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ReassignSubjectRequest) ProtoMessage() {}
+
+func (x *ReassignSubjectRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_csar_authz_v1_authz_proto_msgTypes[30]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ReassignSubjectRequest.ProtoReflect.Descriptor instead.
+func (*ReassignSubjectRequest) Descriptor() ([]byte, []int) {
+	return file_csar_authz_v1_authz_proto_rawDescGZIP(), []int{30}
+}
+
+func (x *ReassignSubjectRequest) GetSourceSubject() string {
+	if x != nil {
+		return x.SourceSubject
+	}
+	return ""
+}
+
+func (x *ReassignSubjectRequest) GetTargetSubject() string {
+	if x != nil {
+		return x.TargetSubject
+	}
+	return ""
+}
+
+type ReassignSubjectResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Reassigned    int32                  `protobuf:"varint,1,opt,name=reassigned,proto3" json:"reassigned,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ReassignSubjectResponse) Reset() {
+	*x = ReassignSubjectResponse{}
+	mi := &file_csar_authz_v1_authz_proto_msgTypes[31]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ReassignSubjectResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ReassignSubjectResponse) ProtoMessage() {}
+
+func (x *ReassignSubjectResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_csar_authz_v1_authz_proto_msgTypes[31]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ReassignSubjectResponse.ProtoReflect.Descriptor instead.
+func (*ReassignSubjectResponse) Descriptor() ([]byte, []int) {
+	return file_csar_authz_v1_authz_proto_rawDescGZIP(), []int{31}
+}
+
+func (x *ReassignSubjectResponse) GetReassigned() int32 {
+	if x != nil {
+		return x.Reassigned
+	}
+	return 0
+}
+
 var File_csar_authz_v1_authz_proto protoreflect.FileDescriptor
 
 const file_csar_authz_v1_authz_proto_rawDesc = "" +
@@ -1665,7 +1761,15 @@ const file_csar_authz_v1_authz_proto_rawDesc = "" +
 	"scope_type\x18\x01 \x01(\tR\tscopeType\x12\x19\n" +
 	"\bscope_id\x18\x02 \x01(\tR\ascopeId\"P\n" +
 	"\x19ListSubjectScopesResponse\x123\n" +
-	"\x06scopes\x18\x01 \x03(\v2\x1b.csar.authz.v1.SubjectScopeR\x06scopes2\xb7\t\n" +
+	"\x06scopes\x18\x01 \x03(\v2\x1b.csar.authz.v1.SubjectScopeR\x06scopes\"f\n" +
+	"\x16ReassignSubjectRequest\x12%\n" +
+	"\x0esource_subject\x18\x01 \x01(\tR\rsourceSubject\x12%\n" +
+	"\x0etarget_subject\x18\x02 \x01(\tR\rtargetSubject\"9\n" +
+	"\x17ReassignSubjectResponse\x12\x1e\n" +
+	"\n" +
+	"reassigned\x18\x01 \x01(\x05R\n" +
+	"reassigned2\x99\n" +
+	"\n" +
 	"\fAuthzService\x12T\n" +
 	"\vCheckAccess\x12!.csar.authz.v1.CheckAccessRequest\x1a\".csar.authz.v1.CheckAccessResponse\x12Q\n" +
 	"\n" +
@@ -1683,7 +1787,8 @@ const file_csar_authz_v1_authz_proto_rawDesc = "" +
 	"\x10RemovePermission\x12&.csar.authz.v1.RemovePermissionRequest\x1a'.csar.authz.v1.RemovePermissionResponse\x12l\n" +
 	"\x13ListRolePermissions\x12).csar.authz.v1.ListRolePermissionsRequest\x1a*.csar.authz.v1.ListRolePermissionsResponse\x12o\n" +
 	"\x14ListScopeAssignments\x12*.csar.authz.v1.ListScopeAssignmentsRequest\x1a+.csar.authz.v1.ListScopeAssignmentsResponse\x12f\n" +
-	"\x11ListSubjectScopes\x12'.csar.authz.v1.ListSubjectScopesRequest\x1a(.csar.authz.v1.ListSubjectScopesResponseB4Z2github.com/ledatu/csar-proto/csar/authz/v1;authzv1b\x06proto3"
+	"\x11ListSubjectScopes\x12'.csar.authz.v1.ListSubjectScopesRequest\x1a(.csar.authz.v1.ListSubjectScopesResponse\x12`\n" +
+	"\x0fReassignSubject\x12%.csar.authz.v1.ReassignSubjectRequest\x1a&.csar.authz.v1.ReassignSubjectResponseB4Z2github.com/ledatu/csar-proto/csar/authz/v1;authzv1b\x06proto3"
 
 var (
 	file_csar_authz_v1_authz_proto_rawDescOnce sync.Once
@@ -1697,7 +1802,7 @@ func file_csar_authz_v1_authz_proto_rawDescGZIP() []byte {
 	return file_csar_authz_v1_authz_proto_rawDescData
 }
 
-var file_csar_authz_v1_authz_proto_msgTypes = make([]protoimpl.MessageInfo, 32)
+var file_csar_authz_v1_authz_proto_msgTypes = make([]protoimpl.MessageInfo, 34)
 var file_csar_authz_v1_authz_proto_goTypes = []any{
 	(*CheckAccessRequest)(nil),           // 0: csar.authz.v1.CheckAccessRequest
 	(*CheckAccessResponse)(nil),          // 1: csar.authz.v1.CheckAccessResponse
@@ -1729,12 +1834,14 @@ var file_csar_authz_v1_authz_proto_goTypes = []any{
 	(*ListSubjectScopesRequest)(nil),     // 27: csar.authz.v1.ListSubjectScopesRequest
 	(*SubjectScope)(nil),                 // 28: csar.authz.v1.SubjectScope
 	(*ListSubjectScopesResponse)(nil),    // 29: csar.authz.v1.ListSubjectScopesResponse
-	nil,                                  // 30: csar.authz.v1.CheckAccessRequest.ContextEntry
-	nil,                                  // 31: csar.authz.v1.CheckAccessResponse.EnrichedHeadersEntry
+	(*ReassignSubjectRequest)(nil),       // 30: csar.authz.v1.ReassignSubjectRequest
+	(*ReassignSubjectResponse)(nil),      // 31: csar.authz.v1.ReassignSubjectResponse
+	nil,                                  // 32: csar.authz.v1.CheckAccessRequest.ContextEntry
+	nil,                                  // 33: csar.authz.v1.CheckAccessResponse.EnrichedHeadersEntry
 }
 var file_csar_authz_v1_authz_proto_depIdxs = []int32{
-	30, // 0: csar.authz.v1.CheckAccessRequest.context:type_name -> csar.authz.v1.CheckAccessRequest.ContextEntry
-	31, // 1: csar.authz.v1.CheckAccessResponse.enriched_headers:type_name -> csar.authz.v1.CheckAccessResponse.EnrichedHeadersEntry
+	32, // 0: csar.authz.v1.CheckAccessRequest.context:type_name -> csar.authz.v1.CheckAccessRequest.ContextEntry
+	33, // 1: csar.authz.v1.CheckAccessResponse.enriched_headers:type_name -> csar.authz.v1.CheckAccessResponse.EnrichedHeadersEntry
 	2,  // 2: csar.authz.v1.CreateRoleResponse.role:type_name -> csar.authz.v1.Role
 	2,  // 3: csar.authz.v1.GetRoleResponse.role:type_name -> csar.authz.v1.Role
 	2,  // 4: csar.authz.v1.ListRolesResponse.roles:type_name -> csar.authz.v1.Role
@@ -1755,21 +1862,23 @@ var file_csar_authz_v1_authz_proto_depIdxs = []int32{
 	22, // 19: csar.authz.v1.AuthzService.ListRolePermissions:input_type -> csar.authz.v1.ListRolePermissionsRequest
 	24, // 20: csar.authz.v1.AuthzService.ListScopeAssignments:input_type -> csar.authz.v1.ListScopeAssignmentsRequest
 	27, // 21: csar.authz.v1.AuthzService.ListSubjectScopes:input_type -> csar.authz.v1.ListSubjectScopesRequest
-	1,  // 22: csar.authz.v1.AuthzService.CheckAccess:output_type -> csar.authz.v1.CheckAccessResponse
-	4,  // 23: csar.authz.v1.AuthzService.CreateRole:output_type -> csar.authz.v1.CreateRoleResponse
-	6,  // 24: csar.authz.v1.AuthzService.DeleteRole:output_type -> csar.authz.v1.DeleteRoleResponse
-	8,  // 25: csar.authz.v1.AuthzService.GetRole:output_type -> csar.authz.v1.GetRoleResponse
-	10, // 26: csar.authz.v1.AuthzService.ListRoles:output_type -> csar.authz.v1.ListRolesResponse
-	12, // 27: csar.authz.v1.AuthzService.AssignRole:output_type -> csar.authz.v1.AssignRoleResponse
-	14, // 28: csar.authz.v1.AuthzService.RevokeRole:output_type -> csar.authz.v1.RevokeRoleResponse
-	16, // 29: csar.authz.v1.AuthzService.ListSubjectRoles:output_type -> csar.authz.v1.ListSubjectRolesResponse
-	19, // 30: csar.authz.v1.AuthzService.AddPermission:output_type -> csar.authz.v1.AddPermissionResponse
-	21, // 31: csar.authz.v1.AuthzService.RemovePermission:output_type -> csar.authz.v1.RemovePermissionResponse
-	23, // 32: csar.authz.v1.AuthzService.ListRolePermissions:output_type -> csar.authz.v1.ListRolePermissionsResponse
-	26, // 33: csar.authz.v1.AuthzService.ListScopeAssignments:output_type -> csar.authz.v1.ListScopeAssignmentsResponse
-	29, // 34: csar.authz.v1.AuthzService.ListSubjectScopes:output_type -> csar.authz.v1.ListSubjectScopesResponse
-	22, // [22:35] is the sub-list for method output_type
-	9,  // [9:22] is the sub-list for method input_type
+	30, // 22: csar.authz.v1.AuthzService.ReassignSubject:input_type -> csar.authz.v1.ReassignSubjectRequest
+	1,  // 23: csar.authz.v1.AuthzService.CheckAccess:output_type -> csar.authz.v1.CheckAccessResponse
+	4,  // 24: csar.authz.v1.AuthzService.CreateRole:output_type -> csar.authz.v1.CreateRoleResponse
+	6,  // 25: csar.authz.v1.AuthzService.DeleteRole:output_type -> csar.authz.v1.DeleteRoleResponse
+	8,  // 26: csar.authz.v1.AuthzService.GetRole:output_type -> csar.authz.v1.GetRoleResponse
+	10, // 27: csar.authz.v1.AuthzService.ListRoles:output_type -> csar.authz.v1.ListRolesResponse
+	12, // 28: csar.authz.v1.AuthzService.AssignRole:output_type -> csar.authz.v1.AssignRoleResponse
+	14, // 29: csar.authz.v1.AuthzService.RevokeRole:output_type -> csar.authz.v1.RevokeRoleResponse
+	16, // 30: csar.authz.v1.AuthzService.ListSubjectRoles:output_type -> csar.authz.v1.ListSubjectRolesResponse
+	19, // 31: csar.authz.v1.AuthzService.AddPermission:output_type -> csar.authz.v1.AddPermissionResponse
+	21, // 32: csar.authz.v1.AuthzService.RemovePermission:output_type -> csar.authz.v1.RemovePermissionResponse
+	23, // 33: csar.authz.v1.AuthzService.ListRolePermissions:output_type -> csar.authz.v1.ListRolePermissionsResponse
+	26, // 34: csar.authz.v1.AuthzService.ListScopeAssignments:output_type -> csar.authz.v1.ListScopeAssignmentsResponse
+	29, // 35: csar.authz.v1.AuthzService.ListSubjectScopes:output_type -> csar.authz.v1.ListSubjectScopesResponse
+	31, // 36: csar.authz.v1.AuthzService.ReassignSubject:output_type -> csar.authz.v1.ReassignSubjectResponse
+	23, // [23:37] is the sub-list for method output_type
+	9,  // [9:23] is the sub-list for method input_type
 	9,  // [9:9] is the sub-list for extension type_name
 	9,  // [9:9] is the sub-list for extension extendee
 	0,  // [0:9] is the sub-list for field type_name
@@ -1786,7 +1895,7 @@ func file_csar_authz_v1_authz_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_csar_authz_v1_authz_proto_rawDesc), len(file_csar_authz_v1_authz_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   32,
+			NumMessages:   34,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
