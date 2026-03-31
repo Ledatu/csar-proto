@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+package csar.notify.v1;
+
+option go_package = "github.com/ledatu/csar-proto/csar/notify/v1;notifyv1";
+
+// NotifyIngestService is defined for forward compatibility.
+// Phase 1 producers use HTTP ingest through the csar router.
+service NotifyIngestService {
+  rpc SendNotification(SendNotificationRequest) returns (SendNotificationResponse);
+  rpc SendNotifications(SendNotificationsRequest) returns (SendNotificationsResponse);
+}
+
+enum Priority {
+  PRIORITY_UNSPECIFIED = 0;
+  PRIORITY_LOW = 1;
+  PRIORITY_NORMAL = 2;
+  PRIORITY_HIGH = 3;
+  PRIORITY_URGENT = 4;
+}
+
+enum Channel {
+  CHANNEL_UNSPECIFIED = 0;
+  CHANNEL_SITE = 1;
+  CHANNEL_TELEGRAM = 2;
+  CHANNEL_EMAIL = 3;
+}
+
+message Notification {
+  string id = 1;
+  string topic = 2;
+  string title = 3;
+  string body = 4;
+  string link = 5;
+  map<string, string> metadata = 6;
+  Priority priority = 7;
+  repeated string recipients = 8;
+  repeated Channel channels = 9;
+  string sender = 10;
+}
+
+message SendNotificationRequest {
+  Notification notification = 1;
+}
+
+message SendNotificationResponse {}
+
+message SendNotificationsRequest {
+  repeated Notification notifications = 1;
+}
+
+message SendNotificationsResponse {
+  int32 accepted = 1;
+}
