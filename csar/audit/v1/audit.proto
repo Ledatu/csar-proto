@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package csar.audit.v1;
+
+option go_package = "github.com/ledatu/csar-proto/csar/audit/v1;auditv1";
+
+import "google/protobuf/timestamp.proto";
+
+// AuditIngestService accepts audit events for centralized persistence.
+service AuditIngestService {
+  rpc RecordEvent(RecordEventRequest) returns (RecordEventResponse);
+  rpc RecordEvents(RecordEventsRequest) returns (RecordEventsResponse);
+}
+
+message AuditEvent {
+  string service = 1;
+  string actor = 2;
+  string action = 3;
+  string target_type = 4;
+  string target_id = 5;
+  string scope_type = 6;
+  string scope_id = 7;
+  bytes before_state = 8;
+  bytes after_state = 9;
+  bytes metadata = 10;
+  string request_id = 11;
+  string client_ip = 12;
+  google.protobuf.Timestamp timestamp = 13;
+}
+
+message RecordEventRequest {
+  AuditEvent event = 1;
+}
+
+message RecordEventResponse {}
+
+message RecordEventsRequest {
+  repeated AuditEvent events = 1;
+}
+
+message RecordEventsResponse {
+  int32 accepted = 1;
+}
