@@ -23,20 +23,23 @@ const (
 )
 
 type AuditEvent struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Service       string                 `protobuf:"bytes,1,opt,name=service,proto3" json:"service,omitempty"`
-	Actor         string                 `protobuf:"bytes,2,opt,name=actor,proto3" json:"actor,omitempty"`
-	Action        string                 `protobuf:"bytes,3,opt,name=action,proto3" json:"action,omitempty"`
-	TargetType    string                 `protobuf:"bytes,4,opt,name=target_type,json=targetType,proto3" json:"target_type,omitempty"`
-	TargetId      string                 `protobuf:"bytes,5,opt,name=target_id,json=targetId,proto3" json:"target_id,omitempty"`
-	ScopeType     string                 `protobuf:"bytes,6,opt,name=scope_type,json=scopeType,proto3" json:"scope_type,omitempty"`
-	ScopeId       string                 `protobuf:"bytes,7,opt,name=scope_id,json=scopeId,proto3" json:"scope_id,omitempty"`
-	BeforeState   []byte                 `protobuf:"bytes,8,opt,name=before_state,json=beforeState,proto3" json:"before_state,omitempty"`
-	AfterState    []byte                 `protobuf:"bytes,9,opt,name=after_state,json=afterState,proto3" json:"after_state,omitempty"`
-	Metadata      []byte                 `protobuf:"bytes,10,opt,name=metadata,proto3" json:"metadata,omitempty"`
-	RequestId     string                 `protobuf:"bytes,11,opt,name=request_id,json=requestId,proto3" json:"request_id,omitempty"`
-	ClientIp      string                 `protobuf:"bytes,12,opt,name=client_ip,json=clientIp,proto3" json:"client_ip,omitempty"`
-	Timestamp     *timestamppb.Timestamp `protobuf:"bytes,13,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
+	state       protoimpl.MessageState `protogen:"open.v1"`
+	Service     string                 `protobuf:"bytes,1,opt,name=service,proto3" json:"service,omitempty"`
+	Actor       string                 `protobuf:"bytes,2,opt,name=actor,proto3" json:"actor,omitempty"`
+	Action      string                 `protobuf:"bytes,3,opt,name=action,proto3" json:"action,omitempty"`
+	TargetType  string                 `protobuf:"bytes,4,opt,name=target_type,json=targetType,proto3" json:"target_type,omitempty"`
+	TargetId    string                 `protobuf:"bytes,5,opt,name=target_id,json=targetId,proto3" json:"target_id,omitempty"`
+	ScopeType   string                 `protobuf:"bytes,6,opt,name=scope_type,json=scopeType,proto3" json:"scope_type,omitempty"`
+	ScopeId     string                 `protobuf:"bytes,7,opt,name=scope_id,json=scopeId,proto3" json:"scope_id,omitempty"`
+	BeforeState []byte                 `protobuf:"bytes,8,opt,name=before_state,json=beforeState,proto3" json:"before_state,omitempty"`
+	AfterState  []byte                 `protobuf:"bytes,9,opt,name=after_state,json=afterState,proto3" json:"after_state,omitempty"`
+	Metadata    []byte                 `protobuf:"bytes,10,opt,name=metadata,proto3" json:"metadata,omitempty"`
+	RequestId   string                 `protobuf:"bytes,11,opt,name=request_id,json=requestId,proto3" json:"request_id,omitempty"`
+	ClientIp    string                 `protobuf:"bytes,12,opt,name=client_ip,json=clientIp,proto3" json:"client_ip,omitempty"`
+	Timestamp   *timestamppb.Timestamp `protobuf:"bytes,13,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
+	// Stable UUID identifying one logical emission; retain it across retries.
+	// Omitted by legacy producers; new ingest assigns it before enqueueing.
+	Id            string `protobuf:"bytes,14,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -160,6 +163,13 @@ func (x *AuditEvent) GetTimestamp() *timestamppb.Timestamp {
 		return x.Timestamp
 	}
 	return nil
+}
+
+func (x *AuditEvent) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
 }
 
 type RecordEventRequest struct {
@@ -334,7 +344,7 @@ var File_csar_audit_v1_audit_proto protoreflect.FileDescriptor
 
 const file_csar_audit_v1_audit_proto_rawDesc = "" +
 	"\n" +
-	"\x19csar/audit/v1/audit.proto\x12\rcsar.audit.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"\xa2\x03\n" +
+	"\x19csar/audit/v1/audit.proto\x12\rcsar.audit.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"\xb2\x03\n" +
 	"\n" +
 	"AuditEvent\x12\x18\n" +
 	"\aservice\x18\x01 \x01(\tR\aservice\x12\x14\n" +
@@ -354,7 +364,8 @@ const file_csar_audit_v1_audit_proto_rawDesc = "" +
 	"\n" +
 	"request_id\x18\v \x01(\tR\trequestId\x12\x1b\n" +
 	"\tclient_ip\x18\f \x01(\tR\bclientIp\x128\n" +
-	"\ttimestamp\x18\r \x01(\v2\x1a.google.protobuf.TimestampR\ttimestamp\"E\n" +
+	"\ttimestamp\x18\r \x01(\v2\x1a.google.protobuf.TimestampR\ttimestamp\x12\x0e\n" +
+	"\x02id\x18\x0e \x01(\tR\x02id\"E\n" +
 	"\x12RecordEventRequest\x12/\n" +
 	"\x05event\x18\x01 \x01(\v2\x19.csar.audit.v1.AuditEventR\x05event\"\x15\n" +
 	"\x13RecordEventResponse\"H\n" +
