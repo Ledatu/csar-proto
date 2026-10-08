@@ -26,6 +26,9 @@ message AuditEvent {
   string request_id = 11;
   string client_ip = 12;
   google.protobuf.Timestamp timestamp = 13;
+  // Stable UUID identifying one logical emission; retain it across retries.
+  // Omitted by legacy producers; new ingest assigns it before enqueueing.
+  string id = 14;
 }
 
 message RecordEventRequest {

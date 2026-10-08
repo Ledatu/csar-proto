@@ -27,6 +27,18 @@ resp, err := client.CheckAccess(ctx, &pb.CheckAccessRequest{
 })
 ```
 
+### `csar/notify/v1` -- Notification Ingest Service
+
+Forward-compatible notification ingest contract. Phase 1 producers still use
+HTTP ingest through the csar router, but the proto package and generated Go
+stubs are kept here for future gRPC producers.
+
+```go
+import notifyv1 "github.com/ledatu/csar-proto/csar/notify/v1"
+
+_ = notifyv1.SendNotificationRequest{}
+```
+
 ---
 
 ## Regenerating Stubs
@@ -42,7 +54,7 @@ Or with protoc directly:
 ```bash
 protoc --go_out=. --go_opt=paths=source_relative \
        --go-grpc_out=. --go-grpc_opt=paths=source_relative \
-       csar/authz/v1/authz.proto
+       csar/authz/v1/authz.proto csar/notify/v1/notify.proto
 ```
 
 ---
