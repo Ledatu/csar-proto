@@ -14,6 +14,10 @@
 - Any authn/authz behavior changes here are security-sensitive because they change the on-wire API used by the router and downstream services.
 
 ## Critical Flows
+- `csar/credential/v1` defines trusted-router upstream-401 reports with exact ref,
+  opaque version and value fingerprint. No token is included; servers must enforce
+  router authentication and rotation ordering. Reports do not authorize replay
+  or credential generation.
 - `CheckAccess` request/response contracts.
 - Role, permission, and assignment management RPC shapes.
 - Forward-compatible notify ingest request/response contracts.
