@@ -62,7 +62,8 @@ protoc --go_out=. --go_opt=paths=source_relative \
 ## License
 
 MIT
-# Stored credential rejection reports
+
+## Stored credential rejection reports
 
 `csar/credential/v1` defines the additive `CredentialService.ReportRejection`
 contract for trusted router reports of actual upstream authentication 401s. It
