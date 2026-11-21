@@ -39,9 +39,17 @@ type AuditEvent struct {
 	Timestamp   *timestamppb.Timestamp `protobuf:"bytes,13,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
 	// Stable UUID identifying one logical emission; retain it across retries.
 	// Omitted by legacy producers; new ingest assigns it before enqueueing.
-	Id            string `protobuf:"bytes,14,opt,name=id,proto3" json:"id,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	Id string `protobuf:"bytes,14,opt,name=id,proto3" json:"id,omitempty"`
+	// Optional issuer-confirmed principal of the immediate authenticated hop.
+	// Absent on historical events; actor retains its original meaning.
+	Caller *CallerIdentity `protobuf:"bytes,15,opt,name=caller,proto3" json:"caller,omitempty"`
+	// Original principal carried by verified delegation, separate from the hop.
+	OriginCaller      *CallerIdentity `protobuf:"bytes,16,opt,name=origin_caller,json=originCaller,proto3" json:"origin_caller,omitempty"`
+	OperationId       string          `protobuf:"bytes,17,opt,name=operation_id,json=operationId,proto3" json:"operation_id,omitempty"`
+	ParentOperationId string          `protobuf:"bytes,18,opt,name=parent_operation_id,json=parentOperationId,proto3" json:"parent_operation_id,omitempty"`
+	TraceId           string          `protobuf:"bytes,19,opt,name=trace_id,json=traceId,proto3" json:"trace_id,omitempty"`
+	unknownFields     protoimpl.UnknownFields
+	sizeCache         protoimpl.SizeCache
 }
 
 func (x *AuditEvent) Reset() {
@@ -172,6 +180,159 @@ func (x *AuditEvent) GetId() string {
 	return ""
 }
 
+func (x *AuditEvent) GetCaller() *CallerIdentity {
+	if x != nil {
+		return x.Caller
+	}
+	return nil
+}
+
+func (x *AuditEvent) GetOriginCaller() *CallerIdentity {
+	if x != nil {
+		return x.OriginCaller
+	}
+	return nil
+}
+
+func (x *AuditEvent) GetOperationId() string {
+	if x != nil {
+		return x.OperationId
+	}
+	return ""
+}
+
+func (x *AuditEvent) GetParentOperationId() string {
+	if x != nil {
+		return x.ParentOperationId
+	}
+	return ""
+}
+
+func (x *AuditEvent) GetTraceId() string {
+	if x != nil {
+		return x.TraceId
+	}
+	return ""
+}
+
+// CallerIdentity mirrors the versioned csar-core/caller contract for audit
+// transport. Presence and structural validity do not establish authenticity.
+type CallerIdentity struct {
+	state            protoimpl.MessageState `protogen:"open.v1"`
+	Version          uint32                 `protobuf:"varint,1,opt,name=version,proto3" json:"version,omitempty"`
+	CallerKind       string                 `protobuf:"bytes,2,opt,name=caller_kind,json=callerKind,proto3" json:"caller_kind,omitempty"`
+	CallerId         string                 `protobuf:"bytes,3,opt,name=caller_id,json=callerId,proto3" json:"caller_id,omitempty"`
+	OwnerSubject     string                 `protobuf:"bytes,4,opt,name=owner_subject,json=ownerSubject,proto3" json:"owner_subject,omitempty"`
+	EffectiveSubject string                 `protobuf:"bytes,5,opt,name=effective_subject,json=effectiveSubject,proto3" json:"effective_subject,omitempty"`
+	CredentialKind   string                 `protobuf:"bytes,6,opt,name=credential_kind,json=credentialKind,proto3" json:"credential_kind,omitempty"`
+	CredentialId     string                 `protobuf:"bytes,7,opt,name=credential_id,json=credentialId,proto3" json:"credential_id,omitempty"`
+	ClientId         string                 `protobuf:"bytes,8,opt,name=client_id,json=clientId,proto3" json:"client_id,omitempty"`
+	ConnectionId     string                 `protobuf:"bytes,9,opt,name=connection_id,json=connectionId,proto3" json:"connection_id,omitempty"`
+	Assurance        string                 `protobuf:"bytes,10,opt,name=assurance,proto3" json:"assurance,omitempty"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
+}
+
+func (x *CallerIdentity) Reset() {
+	*x = CallerIdentity{}
+	mi := &file_csar_audit_v1_audit_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CallerIdentity) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CallerIdentity) ProtoMessage() {}
+
+func (x *CallerIdentity) ProtoReflect() protoreflect.Message {
+	mi := &file_csar_audit_v1_audit_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CallerIdentity.ProtoReflect.Descriptor instead.
+func (*CallerIdentity) Descriptor() ([]byte, []int) {
+	return file_csar_audit_v1_audit_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *CallerIdentity) GetVersion() uint32 {
+	if x != nil {
+		return x.Version
+	}
+	return 0
+}
+
+func (x *CallerIdentity) GetCallerKind() string {
+	if x != nil {
+		return x.CallerKind
+	}
+	return ""
+}
+
+func (x *CallerIdentity) GetCallerId() string {
+	if x != nil {
+		return x.CallerId
+	}
+	return ""
+}
+
+func (x *CallerIdentity) GetOwnerSubject() string {
+	if x != nil {
+		return x.OwnerSubject
+	}
+	return ""
+}
+
+func (x *CallerIdentity) GetEffectiveSubject() string {
+	if x != nil {
+		return x.EffectiveSubject
+	}
+	return ""
+}
+
+func (x *CallerIdentity) GetCredentialKind() string {
+	if x != nil {
+		return x.CredentialKind
+	}
+	return ""
+}
+
+func (x *CallerIdentity) GetCredentialId() string {
+	if x != nil {
+		return x.CredentialId
+	}
+	return ""
+}
+
+func (x *CallerIdentity) GetClientId() string {
+	if x != nil {
+		return x.ClientId
+	}
+	return ""
+}
+
+func (x *CallerIdentity) GetConnectionId() string {
+	if x != nil {
+		return x.ConnectionId
+	}
+	return ""
+}
+
+func (x *CallerIdentity) GetAssurance() string {
+	if x != nil {
+		return x.Assurance
+	}
+	return ""
+}
+
 type RecordEventRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Event         *AuditEvent            `protobuf:"bytes,1,opt,name=event,proto3" json:"event,omitempty"`
@@ -181,7 +342,7 @@ type RecordEventRequest struct {
 
 func (x *RecordEventRequest) Reset() {
 	*x = RecordEventRequest{}
-	mi := &file_csar_audit_v1_audit_proto_msgTypes[1]
+	mi := &file_csar_audit_v1_audit_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -193,7 +354,7 @@ func (x *RecordEventRequest) String() string {
 func (*RecordEventRequest) ProtoMessage() {}
 
 func (x *RecordEventRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_csar_audit_v1_audit_proto_msgTypes[1]
+	mi := &file_csar_audit_v1_audit_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -206,7 +367,7 @@ func (x *RecordEventRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RecordEventRequest.ProtoReflect.Descriptor instead.
 func (*RecordEventRequest) Descriptor() ([]byte, []int) {
-	return file_csar_audit_v1_audit_proto_rawDescGZIP(), []int{1}
+	return file_csar_audit_v1_audit_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *RecordEventRequest) GetEvent() *AuditEvent {
@@ -224,7 +385,7 @@ type RecordEventResponse struct {
 
 func (x *RecordEventResponse) Reset() {
 	*x = RecordEventResponse{}
-	mi := &file_csar_audit_v1_audit_proto_msgTypes[2]
+	mi := &file_csar_audit_v1_audit_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -236,7 +397,7 @@ func (x *RecordEventResponse) String() string {
 func (*RecordEventResponse) ProtoMessage() {}
 
 func (x *RecordEventResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_csar_audit_v1_audit_proto_msgTypes[2]
+	mi := &file_csar_audit_v1_audit_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -249,7 +410,7 @@ func (x *RecordEventResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RecordEventResponse.ProtoReflect.Descriptor instead.
 func (*RecordEventResponse) Descriptor() ([]byte, []int) {
-	return file_csar_audit_v1_audit_proto_rawDescGZIP(), []int{2}
+	return file_csar_audit_v1_audit_proto_rawDescGZIP(), []int{3}
 }
 
 type RecordEventsRequest struct {
@@ -261,7 +422,7 @@ type RecordEventsRequest struct {
 
 func (x *RecordEventsRequest) Reset() {
 	*x = RecordEventsRequest{}
-	mi := &file_csar_audit_v1_audit_proto_msgTypes[3]
+	mi := &file_csar_audit_v1_audit_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -273,7 +434,7 @@ func (x *RecordEventsRequest) String() string {
 func (*RecordEventsRequest) ProtoMessage() {}
 
 func (x *RecordEventsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_csar_audit_v1_audit_proto_msgTypes[3]
+	mi := &file_csar_audit_v1_audit_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -286,7 +447,7 @@ func (x *RecordEventsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RecordEventsRequest.ProtoReflect.Descriptor instead.
 func (*RecordEventsRequest) Descriptor() ([]byte, []int) {
-	return file_csar_audit_v1_audit_proto_rawDescGZIP(), []int{3}
+	return file_csar_audit_v1_audit_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *RecordEventsRequest) GetEvents() []*AuditEvent {
@@ -305,7 +466,7 @@ type RecordEventsResponse struct {
 
 func (x *RecordEventsResponse) Reset() {
 	*x = RecordEventsResponse{}
-	mi := &file_csar_audit_v1_audit_proto_msgTypes[4]
+	mi := &file_csar_audit_v1_audit_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -317,7 +478,7 @@ func (x *RecordEventsResponse) String() string {
 func (*RecordEventsResponse) ProtoMessage() {}
 
 func (x *RecordEventsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_csar_audit_v1_audit_proto_msgTypes[4]
+	mi := &file_csar_audit_v1_audit_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -330,7 +491,7 @@ func (x *RecordEventsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RecordEventsResponse.ProtoReflect.Descriptor instead.
 func (*RecordEventsResponse) Descriptor() ([]byte, []int) {
-	return file_csar_audit_v1_audit_proto_rawDescGZIP(), []int{4}
+	return file_csar_audit_v1_audit_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *RecordEventsResponse) GetAccepted() int32 {
@@ -344,7 +505,7 @@ var File_csar_audit_v1_audit_proto protoreflect.FileDescriptor
 
 const file_csar_audit_v1_audit_proto_rawDesc = "" +
 	"\n" +
-	"\x19csar/audit/v1/audit.proto\x12\rcsar.audit.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"\xb2\x03\n" +
+	"\x19csar/audit/v1/audit.proto\x12\rcsar.audit.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"\x9b\x05\n" +
 	"\n" +
 	"AuditEvent\x12\x18\n" +
 	"\aservice\x18\x01 \x01(\tR\aservice\x12\x14\n" +
@@ -365,7 +526,25 @@ const file_csar_audit_v1_audit_proto_rawDesc = "" +
 	"request_id\x18\v \x01(\tR\trequestId\x12\x1b\n" +
 	"\tclient_ip\x18\f \x01(\tR\bclientIp\x128\n" +
 	"\ttimestamp\x18\r \x01(\v2\x1a.google.protobuf.TimestampR\ttimestamp\x12\x0e\n" +
-	"\x02id\x18\x0e \x01(\tR\x02id\"E\n" +
+	"\x02id\x18\x0e \x01(\tR\x02id\x125\n" +
+	"\x06caller\x18\x0f \x01(\v2\x1d.csar.audit.v1.CallerIdentityR\x06caller\x12B\n" +
+	"\rorigin_caller\x18\x10 \x01(\v2\x1d.csar.audit.v1.CallerIdentityR\foriginCaller\x12!\n" +
+	"\foperation_id\x18\x11 \x01(\tR\voperationId\x12.\n" +
+	"\x13parent_operation_id\x18\x12 \x01(\tR\x11parentOperationId\x12\x19\n" +
+	"\btrace_id\x18\x13 \x01(\tR\atraceId\"\xe8\x02\n" +
+	"\x0eCallerIdentity\x12\x18\n" +
+	"\aversion\x18\x01 \x01(\rR\aversion\x12\x1f\n" +
+	"\vcaller_kind\x18\x02 \x01(\tR\n" +
+	"callerKind\x12\x1b\n" +
+	"\tcaller_id\x18\x03 \x01(\tR\bcallerId\x12#\n" +
+	"\rowner_subject\x18\x04 \x01(\tR\fownerSubject\x12+\n" +
+	"\x11effective_subject\x18\x05 \x01(\tR\x10effectiveSubject\x12'\n" +
+	"\x0fcredential_kind\x18\x06 \x01(\tR\x0ecredentialKind\x12#\n" +
+	"\rcredential_id\x18\a \x01(\tR\fcredentialId\x12\x1b\n" +
+	"\tclient_id\x18\b \x01(\tR\bclientId\x12#\n" +
+	"\rconnection_id\x18\t \x01(\tR\fconnectionId\x12\x1c\n" +
+	"\tassurance\x18\n" +
+	" \x01(\tR\tassurance\"E\n" +
 	"\x12RecordEventRequest\x12/\n" +
 	"\x05event\x18\x01 \x01(\v2\x19.csar.audit.v1.AuditEventR\x05event\"\x15\n" +
 	"\x13RecordEventResponse\"H\n" +
@@ -389,28 +568,31 @@ func file_csar_audit_v1_audit_proto_rawDescGZIP() []byte {
 	return file_csar_audit_v1_audit_proto_rawDescData
 }
 
-var file_csar_audit_v1_audit_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_csar_audit_v1_audit_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_csar_audit_v1_audit_proto_goTypes = []any{
 	(*AuditEvent)(nil),            // 0: csar.audit.v1.AuditEvent
-	(*RecordEventRequest)(nil),    // 1: csar.audit.v1.RecordEventRequest
-	(*RecordEventResponse)(nil),   // 2: csar.audit.v1.RecordEventResponse
-	(*RecordEventsRequest)(nil),   // 3: csar.audit.v1.RecordEventsRequest
-	(*RecordEventsResponse)(nil),  // 4: csar.audit.v1.RecordEventsResponse
-	(*timestamppb.Timestamp)(nil), // 5: google.protobuf.Timestamp
+	(*CallerIdentity)(nil),        // 1: csar.audit.v1.CallerIdentity
+	(*RecordEventRequest)(nil),    // 2: csar.audit.v1.RecordEventRequest
+	(*RecordEventResponse)(nil),   // 3: csar.audit.v1.RecordEventResponse
+	(*RecordEventsRequest)(nil),   // 4: csar.audit.v1.RecordEventsRequest
+	(*RecordEventsResponse)(nil),  // 5: csar.audit.v1.RecordEventsResponse
+	(*timestamppb.Timestamp)(nil), // 6: google.protobuf.Timestamp
 }
 var file_csar_audit_v1_audit_proto_depIdxs = []int32{
-	5, // 0: csar.audit.v1.AuditEvent.timestamp:type_name -> google.protobuf.Timestamp
-	0, // 1: csar.audit.v1.RecordEventRequest.event:type_name -> csar.audit.v1.AuditEvent
-	0, // 2: csar.audit.v1.RecordEventsRequest.events:type_name -> csar.audit.v1.AuditEvent
-	1, // 3: csar.audit.v1.AuditIngestService.RecordEvent:input_type -> csar.audit.v1.RecordEventRequest
-	3, // 4: csar.audit.v1.AuditIngestService.RecordEvents:input_type -> csar.audit.v1.RecordEventsRequest
-	2, // 5: csar.audit.v1.AuditIngestService.RecordEvent:output_type -> csar.audit.v1.RecordEventResponse
-	4, // 6: csar.audit.v1.AuditIngestService.RecordEvents:output_type -> csar.audit.v1.RecordEventsResponse
-	5, // [5:7] is the sub-list for method output_type
-	3, // [3:5] is the sub-list for method input_type
-	3, // [3:3] is the sub-list for extension type_name
-	3, // [3:3] is the sub-list for extension extendee
-	0, // [0:3] is the sub-list for field type_name
+	6, // 0: csar.audit.v1.AuditEvent.timestamp:type_name -> google.protobuf.Timestamp
+	1, // 1: csar.audit.v1.AuditEvent.caller:type_name -> csar.audit.v1.CallerIdentity
+	1, // 2: csar.audit.v1.AuditEvent.origin_caller:type_name -> csar.audit.v1.CallerIdentity
+	0, // 3: csar.audit.v1.RecordEventRequest.event:type_name -> csar.audit.v1.AuditEvent
+	0, // 4: csar.audit.v1.RecordEventsRequest.events:type_name -> csar.audit.v1.AuditEvent
+	2, // 5: csar.audit.v1.AuditIngestService.RecordEvent:input_type -> csar.audit.v1.RecordEventRequest
+	4, // 6: csar.audit.v1.AuditIngestService.RecordEvents:input_type -> csar.audit.v1.RecordEventsRequest
+	3, // 7: csar.audit.v1.AuditIngestService.RecordEvent:output_type -> csar.audit.v1.RecordEventResponse
+	5, // 8: csar.audit.v1.AuditIngestService.RecordEvents:output_type -> csar.audit.v1.RecordEventsResponse
+	7, // [7:9] is the sub-list for method output_type
+	5, // [5:7] is the sub-list for method input_type
+	5, // [5:5] is the sub-list for extension type_name
+	5, // [5:5] is the sub-list for extension extendee
+	0, // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_csar_audit_v1_audit_proto_init() }
@@ -424,7 +606,7 @@ func file_csar_audit_v1_audit_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_csar_audit_v1_audit_proto_rawDesc), len(file_csar_audit_v1_audit_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   5,
+			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

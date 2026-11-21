@@ -29,6 +29,29 @@ message AuditEvent {
   // Stable UUID identifying one logical emission; retain it across retries.
   // Omitted by legacy producers; new ingest assigns it before enqueueing.
   string id = 14;
+  // Optional issuer-confirmed principal of the immediate authenticated hop.
+  // Absent on historical events; actor retains its original meaning.
+  CallerIdentity caller = 15;
+  // Original principal carried by verified delegation, separate from the hop.
+  CallerIdentity origin_caller = 16;
+  string operation_id = 17;
+  string parent_operation_id = 18;
+  string trace_id = 19;
+}
+
+// CallerIdentity mirrors the versioned csar-core/caller contract for audit
+// transport. Presence and structural validity do not establish authenticity.
+message CallerIdentity {
+  uint32 version = 1;
+  string caller_kind = 2;
+  string caller_id = 3;
+  string owner_subject = 4;
+  string effective_subject = 5;
+  string credential_kind = 6;
+  string credential_id = 7;
+  string client_id = 8;
+  string connection_id = 9;
+  string assurance = 10;
 }
 
 message RecordEventRequest {
