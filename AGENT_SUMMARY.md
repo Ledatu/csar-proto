@@ -1,5 +1,12 @@
 # csar-proto Agent Summary
 
+## W1 audit identity wire (source only)
+
+AuditEvent fields 15–19 add optional caller/origin identity and operation/trace
+correlation. Fields 1–14 and Actor remain unchanged. Upgrade receivers/storage
+before producers; protobuf unknown-field preservation alone does not upgrade
+old service adapters. Legacy events keep absent identity rather than guessing it.
+
 ## Role In Prod
 `csar-proto` is the source of truth for CSAR gRPC API definitions and generated Go stubs. In prod today it backs the authz service/authn client path and carries the forward-compatible notify ingest contract. It is the only place where new gRPC contracts should live.
 
