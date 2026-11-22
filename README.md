@@ -6,7 +6,7 @@ Shared Protocol Buffer definitions and generated Go stubs for the CSAR service f
 go get github.com/ledatu/csar-proto
 ```
 
-Requires Go 1.25+.
+Requires Go 1.26+. CI and release builds use the patched Go 1.26.11 toolchain.
 
 ---
 
