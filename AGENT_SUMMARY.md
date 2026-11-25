@@ -61,3 +61,7 @@ old service adapters. Legacy events keep absent identity rather than guessing it
 ## Required Quality Gates
 - `buf lint`
 - `buf generate`
+
+`csar/throttle/v1.RequestQuota` defines rolling request caps for coordinator
+traffic policies. CSAR owns enforcement and capability negotiation; workers use
+its retry headers. Limits, scope keys and windows survive configuration transport.

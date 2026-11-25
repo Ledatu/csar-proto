@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package csar.throttle.v1;
+
+import "google/protobuf/duration.proto";
+
+option go_package = "github.com/ledatu/csar-proto/csar/throttle/v1;throttlev1";
+
+// RequestQuota is an additional rolling request cap alongside router pacing.
+// Stable names and keys retain spent attempts across reloads and limit changes.
+message RequestQuota {
+  string name = 1;
+  string key = 2;
+  int32 requests = 3;
+  google.protobuf.Duration window = 4;
+}
