@@ -72,3 +72,7 @@ the token. The coordinator must authenticate the router transport, compare the
 reported value against current rotation state and preserve fail-closed behavior.
 It does not replay a request or mint a replacement. Existing AuthService contracts
 remain compatible; deploy the report server before relying on durable rejection.
+
+`csar/throttle/v1.RequestQuota` defines rolling request caps for coordinator
+traffic policies. CSAR owns enforcement and capability negotiation; workers use
+its retry headers. Limits, scope keys and windows survive configuration transport.
