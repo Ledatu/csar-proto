@@ -65,3 +65,11 @@ old service adapters. Legacy events keep absent identity rather than guessing it
 `csar/throttle/v1.RequestQuota` defines rolling request caps for coordinator
 traffic policies. CSAR owns enforcement and capability negotiation; workers use
 its retry headers. Limits, scope keys and windows survive configuration transport.
+
+## Explicit response-compression policy (source only)
+
+csar/config/v1.ResponseCompression carries passthrough/gzip plus a bounded gzip
+decision prefix. Absent messages inherit receiver configuration; an existing
+encoded upstream body is never recompressed. Receivers validate and advertise
+preservation capability before coordinators send an explicit policy. This adds
+no RPC or client-protocol version and changes no request/retry behavior.

@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package csar.config.v1;
+
+option go_package = "github.com/ledatu/csar-proto/csar/config/v1;configv1";
+
+// ResponseCompression is an explicit generated-response encoding policy.
+// Message absence inherits the receiver's configured default. This policy does
+// not change upstream negotiation, imply request retries or permit recompression
+// of an already-encoded response. Receivers validate values before activation.
+message ResponseCompression {
+  // Required when present: "passthrough" or "gzip". Passthrough preserves the
+  // upstream representation; gzip still requires client support and eligibility.
+  string mode = 1;
+  // Gzip decision prefix in bytes: zero uses 1024, otherwise 1..65536. Must be
+  // zero for passthrough. An explicit flush prioritizes streaming over the prefix.
+  int32 min_bytes = 2;
+}
